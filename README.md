@@ -1,1 +1,1 @@
-Gluon site config for Freifunk Landau, within the Albufer Domain.
+Gluon site config for Freifunk Pfalz, within the Albufer Domain.
