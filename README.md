@@ -1,1 +1,1 @@
-Gluon site config for Freifunk Pfalz, within the Albufer Domain.
+Gluon site config für Freifunk Südpfalz in der Queichufer Domain des Freifunk Rheinland e.V.
