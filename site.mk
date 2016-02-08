@@ -1,7 +1,7 @@
 GLUON_SITE_PACKAGES := \
   gluon-mesh-batman-adv-15 \
   gluon-alfred \
-  gluon-announced \
+  gluon-respondd \
   gluon-autoupdater \
   gluon-config-mode-autoupdater \
   gluon-config-mode-contact-info \
@@ -26,7 +26,7 @@ GLUON_SITE_PACKAGES := \
   iwinfo
 
 GLUON_BRANCH ?= experimental
-DEFAULT_GLUON_RELEASE := 0.1.7~$(GLUON_BRANCH)_$(shell date '+%Y%m%d')
+DEFAULT_GLUON_RELEASE := 0.1.8~$(GLUON_BRANCH)_$(shell date '+%Y%m%d')
 
 # Allow overriding the release number from the command line
 GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
