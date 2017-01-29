@@ -41,7 +41,8 @@ cp "$WORKSPACE/site.conf" "$WORKSPACE/gluon/site/"
 cd "$WORKSPACE/gluon"
 make update "GLUON_RELEASE=$GLUON_RELEASE"  
 make clean "GLUON_RELEASE=$GLUON_RELEASE" 
-make V=s "GLUON_RELEASE=$GLUON_RELEASE" "GLUON_BRANCH=stable"
+make -j5 V=s GLUON_TARGET=ar71xx-generic GLUON_BRANCH=experimental "GLUON_RELEASE=$GLUON_RELEASE"
+# make V=s "GLUON_RELEASE=$GLUON_RELEASE" "GLUON_BRANCH=stable"
 
 # Manifest für Autoupdater erstellen und mit den Key des Servers unterschreiben 
 # Der private Schlüssel des Servers muss in $JENKINS_HOME/secret liegen und das 
