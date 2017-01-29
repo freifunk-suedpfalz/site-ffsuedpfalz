@@ -32,7 +32,7 @@ git checkout -f $GLUON_COMMIT
 
 # Site config kopieren
 test -d "$WORKSPACE/gluon/site" && rm -r "$WORKSPACE/gluon/site"
-mkdir "$WORKSPACE/Gluon_l2tp_2016.2.2/site"
+mkdir "$WORKSPACE/gluon/site"
 cp "$WORKSPACE/modules" "$WORKSPACE/gluon/site/"
 cp "$WORKSPACE/site.mk" "$WORKSPACE/gluon/site/"
 cp "$WORKSPACE/site.conf" "$WORKSPACE/gluon/site/"
