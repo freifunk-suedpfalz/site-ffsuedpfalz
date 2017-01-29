@@ -25,20 +25,20 @@ export GLUON_RELEASE=$GLUON_COMMIT-`date '+%Y%m%d'`
 echo "Building gluon $GLUON_COMMIT -> $GLUON_RELEASE"
 
 # Verzeichnis für Gluon-Repo erstellen und initialisieren   
-test -d "$WORKSPACE/gluon" || git clone "$GLUON_URL" "$WORKSPACE/gluon"
-cd "$WORKSPACE/gluon"
+test -d "$WORKSPACE/Gluon_l2tp_2016.2.2" || git clone "$GLUON_URL" "$WORKSPACE/Gluon_l2tp_2016.2.2"
+cd "$WORKSPACE/Gluon_l2tp_2016.2.2"
 git fetch 
 git checkout -f $GLUON_COMMIT
 
 # Site config kopieren
-test -d "$WORKSPACE/gluon/site" && rm -r "$WORKSPACE/gluon/site"
-mkdir "$WORKSPACE/gluon/site"
-cp "$WORKSPACE/modules" "$WORKSPACE/gluon/site/"
-cp "$WORKSPACE/site.mk" "$WORKSPACE/gluon/site/"
-cp "$WORKSPACE/site.conf" "$WORKSPACE/gluon/site/"
+test -d "$WORKSPACE/Gluon_l2tp_2016.2.2/site" && rm -r "$WORKSPACE/Gluon_l2tp_2016.2.2/site"
+mkdir "$WORKSPACE/Gluon_l2tp_2016.2.2/site"
+cp "$WORKSPACE/modules" "$WORKSPACE/Gluon_l2tp_2016.2.2/site/"
+cp "$WORKSPACE/site.mk" "$WORKSPACE/Gluon_l2tp_2016.2.2/site/"
+cp "$WORKSPACE/site.conf" "$WORKSPACE/Gluon_l2tp_2016.2.2/site/"
 
 # Gluon Pakete aktualisieren und Build ausfuhren 
-cd "$WORKSPACE/gluon"
+cd "$WORKSPACE/Gluon_l2tp_2016.2.2"
 make update "GLUON_RELEASE=$GLUON_RELEASE"  
 make clean "GLUON_RELEASE=$GLUON_RELEASE" 
 make -j5 V=s GLUON_TARGET=ar71xx-generic GLUON_BRANCH=experimental "GLUON_RELEASE=$GLUON_RELEASE"
