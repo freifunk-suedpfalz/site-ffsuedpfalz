@@ -40,7 +40,7 @@ cp "$WORKSPACE/site.conf" "$WORKSPACE/gluon/site/"
 # Gluon Pakete aktualisieren und Build ausfuhren 
 cd "$WORKSPACE/gluon"
 make update "GLUON_RELEASE=$GLUON_RELEASE"  
-make clean GLUON_TARGET=ar71xx-generic "GLUON_RELEASE=$GLUON_RELEASE" 
+make clean V=s GLUON_TARGET=ar71xx-generic
 make -j5 V=s GLUON_TARGET=ar71xx-generic GLUON_BRANCH=experimental "GLUON_RELEASE=$GLUON_RELEASE"
 # make V=s "GLUON_RELEASE=$GLUON_RELEASE" "GLUON_BRANCH=stable"
 
