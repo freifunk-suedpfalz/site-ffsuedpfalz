@@ -48,5 +48,3 @@ make -j5 V=s GLUON_TARGET=ar71xx-generic GLUON_BRANCH=experimental "GLUON_RELEAS
 # Der private Schlüssel des Servers muss in $JENKINS_HOME/secret liegen und das 
 # Tools 'ecdsasign' muss auf dem Server verfügbar sein.
 # Repo: https://github.com/tcatm/ecdsautils
-
-# test jenkins
