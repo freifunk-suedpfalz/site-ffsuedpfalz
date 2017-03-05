@@ -25,20 +25,20 @@ export GLUON_RELEASE=$GLUON_COMMIT-`date '+%Y%m%d'`
 echo "Building gluon $GLUON_COMMIT -> $GLUON_RELEASE"
 
 # Verzeichnis für Gluon-Repo erstellen und initialisieren   
-test -d "${WORKSPACE}/gluon" || git clone "$GLUON_URL" "${WORKSPACE}/gluon"
-cd "${WORKSPACE}/gluon"
+test -d "$WORKSPACE/gluon" || git clone "$GLUON_URL" "$WORKSPACE/gluon"
+cd "$WORKSPACE/gluon"
 git fetch 
 git checkout -f $GLUON_COMMIT
 
 # Site config kopieren
-test -d "${WORKSPACE}/gluon/site" && rm -r "${WORKSPACE}/gluon/site"
-mkdir "${WORKSPACE}/gluon/site"
-cp "${WORKSPACE}/modules" "${WORKSPACE}/gluon/site/"
-cp "${WORKSPACE}/site.mk" "${WORKSPACE}/gluon/site/"
-cp "${WORKSPACE}/site.conf" "${WORKSPACE}/gluon/site/"
+test -d "$WORKSPACE/gluon/site" && rm -r "$WORKSPACE/gluon/site"
+mkdir "$WORKSPACE/gluon/site"
+cp "$WORKSPACE/modules" "$WORKSPACE/gluon/site/"
+cp "$WORKSPACE/site.mk" "$WORKSPACE/gluon/site/"
+cp "$WORKSPACE/site.conf" "$WORKSPACE/gluon/site/"
 
 # Gluon Pakete aktualisieren und Build ausfuhren 
-cd "${WORKSPACE}/gluon"
+cd "$WORKSPACE/gluon"
 make update "GLUON_RELEASE=$GLUON_RELEASE"  
 make clean V=s GLUON_TARGET=ar71xx-generic
 make -j5 V=s GLUON_TARGET=ar71xx-generic GLUON_BRANCH=experimental "GLUON_RELEASE=$GLUON_RELEASE"
@@ -48,3 +48,4 @@ make -j5 V=s GLUON_TARGET=ar71xx-generic GLUON_BRANCH=experimental "GLUON_RELEAS
 # Der private Schlüssel des Servers muss in $JENKINS_HOME/secret liegen und das 
 # Tools 'ecdsasign' muss auf dem Server verfügbar sein.
 # Repo: https://github.com/tcatm/ecdsautils
+
