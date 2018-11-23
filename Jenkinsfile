@@ -7,6 +7,8 @@ pipeline {
   }
   parameters {
     string(name: 'GLUON_VERSION', defaultValue: 'v2018.1.1', description: 'Gluon version')
+    string(name: 'BUILD_TYPE', defaultValue: 'experimental', description: 'experimental, beta, stable')
+    string(name: 'VERSION', defaultValue: '1.4.0', description: 'Firmware version')
   }
   stages {
       stage('prepare build') {
@@ -14,7 +16,7 @@ pipeline {
             rocketSend channel: 'firmware_builds', message: 'Build started'
             echo "Running ${env.BUILD_ID} on on ${env.JENKINS_URL}"
             checkout scm
-            sh "sh -x build-jenkins.sh ${env.BRANCH_NAME} ${params.GLUON_VERSION}"
+            sh "sh -x build-jenkins.sh ${env.BRANCH_NAME} ${params.GLUON_VERSION} ${params.BUILD_TYPE} ${params.VERSION}"
           }
       }
       stage('build ar71xx-generic') {
