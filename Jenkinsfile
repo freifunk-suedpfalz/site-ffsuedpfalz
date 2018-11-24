@@ -89,6 +89,13 @@ pipeline {
             }
           }
       }
+      stage('create manifest') {
+          steps {
+            dir("/temp/${env.BRANCH_NAME}") {
+              sh "make manifest GLUON_BRANCH=${BUILD_TYPE}"
+            }
+          }
+      }
       stage('move images') {
           steps {
             sh "mkdir -p /mnt/images/${env.BRANCH_NAME}"
