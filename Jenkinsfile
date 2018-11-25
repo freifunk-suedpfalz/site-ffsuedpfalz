@@ -6,9 +6,9 @@ pipeline {
     }
   }
   parameters {
-    string(name: 'GLUON_VERSION', defaultValue: 'v2018.1.1', description: 'Gluon version')
+    string(name: 'GLUON_VERSION', defaultValue: 'v2018.1.2', description: 'Gluon version')
     string(name: 'BUILD_TYPE', defaultValue: 'experimental', description: 'experimental, beta, stable')
-    string(name: 'VERSION', defaultValue: '1.4.0', description: 'Firmware version')
+    string(name: 'VERSION', defaultValue: '1.4.1', description: 'Firmware version')
   }
   stages {
       stage('prepare build') {
@@ -22,70 +22,70 @@ pipeline {
       stage('build ar71xx-generic') {
           steps {
             dir("/temp/${env.BRANCH_NAME}") {
-              sh "make -j13 V=s GLUON_TARGET=ar71xx-generic GLUON_BRANCH=experimental GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
+              sh "make -j13 V=s GLUON_TARGET=ar71xx-generic GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
             }
           }
       }
       stage('build ar71xx-tiny') {
           steps {
             dir("/temp/${env.BRANCH_NAME}") {
-              sh "make -j13 V=s GLUON_TARGET=ar71xx-tiny GLUON_BRANCH=experimental GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
+              sh "make -j13 V=s GLUON_TARGET=ar71xx-tiny GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
             }
           }
       }
       stage("build ar71xx-nand") {
           steps {
             dir("/temp/${env.BRANCH_NAME}") {
-              sh "make -j13 V=s GLUON_TARGET=ar71xx-nand GLUON_BRANCH=experimental GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
+              sh "make -j13 V=s GLUON_TARGET=ar71xx-nand GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
             }
           }
       }
       stage("build brcm2708-bcm2708") {
           steps {
             dir("/temp/${env.BRANCH_NAME}") {
-              sh "make -j13 V=s GLUON_TARGET=brcm2708-bcm2708 GLUON_BRANCH=experimental GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
+              sh "make -j13 V=s GLUON_TARGET=brcm2708-bcm2708 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
             }
           }
       }
       stage("build brcm2708-bcm2709") {
           steps {
             dir("/temp/${env.BRANCH_NAME}") {
-              sh "make -j13 V=s GLUON_TARGET=brcm2708-bcm2709 GLUON_BRANCH=experimental GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
+              sh "make -j13 V=s GLUON_TARGET=brcm2708-bcm2709 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
             }
           }
       }
       stage('build mpc85xx-generic') {
           steps {
             dir("/temp/${env.BRANCH_NAME}") {
-              sh "make -j13 V=s GLUON_TARGET=mpc85xx-generic GLUON_BRANCH=experimental GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
+              sh "make -j13 V=s GLUON_TARGET=mpc85xx-generic GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
             }
           }
       }
        stage('build ramips-mt7621') {
           steps {
             dir("/temp/${env.BRANCH_NAME}") {
-              sh "make -j13 V=s GLUON_TARGET=ramips-mt7621 GLUON_BRANCH=experimental GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
+              sh "make -j13 V=s GLUON_TARGET=ramips-mt7621 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
             }
           }
       }
       stage('build x86-generic') {
           steps {
             dir("/temp/${env.BRANCH_NAME}") {
-              sh "make -j13 V=s GLUON_TARGET=x86-generic GLUON_BRANCH=experimental GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
+              sh "make -j13 V=s GLUON_TARGET=x86-generic GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
             }
           }
       }
       stage('build x86-geode') {
           steps {
             dir("/temp/${env.BRANCH_NAME}") {
-              sh "make -j13 V=s GLUON_TARGET=x86-geode GLUON_BRANCH=experimental GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
+              sh "make -j13 V=s GLUON_TARGET=x86-geode GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
             }
           }
       }
       stage('build x86-64') {
           steps {
             dir("/temp/${env.BRANCH_NAME}") {
-              sh "make -j13 V=s GLUON_TARGET=x86-64 GLUON_BRANCH=experimental GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
+              sh "make -j13 V=s GLUON_TARGET=x86-64 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
             }
           }
       }
