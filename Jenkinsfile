@@ -92,7 +92,7 @@ pipeline {
       stage('create manifest') {
           steps {
             dir("/temp/${env.BRANCH_NAME}") {
-              sh "make manifest GLUON_BRANCH=${BUILD_TYPE} GLUON_RELEASE=${GLUON_VERSION}"
+              sh "make manifest GLUON_BRANCH=${BUILD_TYPE} GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
             }
           }
       }
