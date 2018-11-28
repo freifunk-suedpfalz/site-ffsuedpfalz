@@ -8,7 +8,7 @@ pipeline {
   parameters {
     string(name: 'GLUON_VERSION', defaultValue: 'v2018.1.3', description: 'Gluon version')
     string(name: 'BUILD_TYPE', defaultValue: 'experimental', description: 'experimental, beta, stable')
-    string(name: 'VERSION', defaultValue: '1.4.1', description: 'Firmware version')
+    string(name: 'VERSION', defaultValue: '1.4.2', description: 'Firmware version')
   }
   stages {
       stage('prepare build') {
