@@ -12,7 +12,9 @@ GLUON_FEATURES := \
   respondd \
   status-page \
   web-advanced \
-  web-wizard
+  web-wizard \
+  web-osm \
+  config-mode-geo-location-osm
 
 GLUON_SITE_PACKAGES := \
   gluon-autorestart \
