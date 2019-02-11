@@ -6,7 +6,7 @@ pipeline {
     }
   }
   parameters {
-    string(name: 'GLUON_VERSION', defaultValue: 'v2018.1.4', description: 'Gluon version')
+    string(name: 'GLUON_VERSION', defaultValue: 'v2018.2', description: 'Gluon version')
     string(name: 'BUILD_TYPE', defaultValue: 'beta', description: 'experimental, beta, stable')
     string(name: 'VERSION', defaultValue: '1.4.5', description: 'Firmware version')
   }
