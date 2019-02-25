@@ -1,28 +1,17 @@
-##	gluon site modules example
-#		this file allows to define additional
-#		package feeds to be used.
-#		packages from this feeds can then be included
-#		via site.mk
+GLUON_SITE_FEEDS='ffrl_packages ffddorf'
+
+#FREIFUNK Packages
+PACKAGES_FREIFUNK_REPO=https://github.com/freifunk-gluon/gluon/tree/master/package
+PACKAGES_FREIFUNK_COMMIT=2465a103f61f078ae634979b90def6cbc6ef925f
+PACKAGES_FREIFUNK_BRANCH=Branch_master
 
 
-##	GLUON_SITE_FEEDS
-#		feeds to include, note that this is not called
-#		GLUON_FEEDS as in the Gluon modules file.
-#
-#		for each feed name given, there have to be
-#		two variables given in the following.
+#FFRL Packages
+PACKAGES_FFRL_PACKAGES_REPO=https://github.com/ffrl/ffrl-packages.git
+PACKAGES_FFRL_PACKAGES_COMMIT=464fa9c1f3190a7e6d82dba1adac1d5e9f8d1835
+PACKAGES_FFRL_PACKAGES_BRANCH=Branch_v2017.x
 
-#GLUON_SITE_FEEDS='ffhh_packages'
-
-
-##	PACKAGES_$feedname_REPO
-#		the  git repository from where to clone the package feed
-
-#PACKAGES_FFHH_PACKAGES_REPO=git://github.com/freifunkhamburg/ffhh-packages.git
-
-
-##	PACKAGES_$feedname_COMMIT
-#		the version/commit of the git repository to clone
-
-#PACKAGES_FFHH_PACKAGES_COMMIT=0fc9d44e95000c61a69b04278e4d38f2a3f57e49
-
+#FFDORF Packages
+PACKAGES_FFDDORF_REPO=https://github.com/ffddorf/ddorf-packages.git
+PACKAGES_FFDDORF_COMMIT=92e2efaf21c80488051a00ca913205944f143379
+PACKAGES_FFDDORF_BRANCH=v2017.x
