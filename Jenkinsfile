@@ -61,13 +61,6 @@ pipeline {
         }
       }
     }
-    stage("build ipq806x") {
-      steps {
-        dir("/temp/${env.BRANCH_NAME}") {
-          sh "make -j13 V=s GLUON_TARGET=ipq806x GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
-        }
-      }
-    }
     stage('build mpc85xx-generic') {
       steps {
         dir("/temp/${env.BRANCH_NAME}") {
@@ -103,10 +96,10 @@ pipeline {
         }
       }
     }
-    stage('build sunxi') {
+    stage('build sunxi-cortexa7') {
       steps {
         dir("/temp/${env.BRANCH_NAME}") {
-          sh "make -j13 V=s GLUON_TARGET=sunxi GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+          sh "make -j13 V=s GLUON_TARGET=sunxi-cortexa7 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
         }
       }
     }
