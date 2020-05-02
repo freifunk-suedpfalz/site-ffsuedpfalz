@@ -1,4 +1,4 @@
-pipeline {
+spipeline {
   agent {
     node {
       label 'master'
@@ -6,9 +6,9 @@ pipeline {
     }
   }
   parameters {
-    string(name: 'GLUON_VERSION', defaultValue: 'v2019.1', description: 'Gluon version')
+    string(name: 'GLUON_VERSION', defaultValue: 'v2020.1.2', description: 'Gluon version')
     string(name: 'BUILD_TYPE', defaultValue: 'experimental', description: 'experimental, beta, stable')
-    string(name: 'VERSION', defaultValue: '1.4.9', description: 'Firmware version')
+    string(name: 'VERSION', defaultValue: '1.4.10', description: 'Firmware version')
   }
   stages {
     stage('prepare build') {
@@ -26,10 +26,10 @@ pipeline {
         }
       }
     }
-    stage('build ar71xx-tiny') {
+    stage('build ar71xx-mikrotik') {
       steps {
         dir("/temp/${env.BRANCH_NAME}") {
-          sh "make -j1 V=s GLUON_TARGET=ar71xx-tiny GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+          sh "make -j1 V=s GLUON_TARGET=ar71xx-mikrotik GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
         }
       }
     }
@@ -37,6 +37,13 @@ pipeline {
       steps {
         dir("/temp/${env.BRANCH_NAME}") {
           sh "make -j1 V=s GLUON_TARGET=ar71xx-nand GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+        }
+      }
+    }
+    stage('build ar71xx-tiny') {
+      steps {
+        dir("/temp/${env.BRANCH_NAME}") {
+          sh "make -j1 V=s GLUON_TARGET=ar71xx-tiny GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
         }
       }
     }
@@ -54,6 +61,41 @@ pipeline {
         }
       }
     }
+    stage("build brcm2708-bcm2710") {
+      steps {
+        dir("/temp/${env.BRANCH_NAME}") {
+          sh "make -j1 V=s GLUON_TARGET=brcm2708-bcm2710 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+        }
+      }
+    }
+    stage('build ipq40xx-generic') {
+      steps {
+        dir("/temp/${env.BRANCH_NAME}") {
+          sh "make -j1 V=s GLUON_TARGET=ipq40xx-generic GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+        }
+      }
+    }
+    stage('build ipq806x-generic') {
+      steps {
+        dir("/temp/${env.BRANCH_NAME}") {
+          sh "make -j1 V=s GLUON_TARGET=ipq806x-generic GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+        }
+      }
+    }
+    stage('build lantiq-xrx200') {
+      steps {
+        dir("/temp/${env.BRANCH_NAME}") {
+          sh "make -j1 V=s GLUON_TARGET=lantiq-xrx200 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+        }
+      }
+    }
+    stage('build lantiq-xway') {
+      steps {
+        dir("/temp/${env.BRANCH_NAME}") {
+          sh "make -j1 V=s GLUON_TARGET=lantiq-xway GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+        }
+      }
+    }
     stage('build mpc85xx-generic') {
       steps {
         dir("/temp/${env.BRANCH_NAME}") {
@@ -61,45 +103,17 @@ pipeline {
         }
       }
     }
-    stage('build ramips-mt7621') {
+    stage('build mpc85xx-p1020') {
       steps {
         dir("/temp/${env.BRANCH_NAME}") {
-          sh "make -j1 V=s GLUON_TARGET=ramips-mt7621 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+          sh "make -j1 V=s GLUON_TARGET=mpc85xx-p1020c GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
         }
       }
     }
-    stage('build sunxi-cortexa7') {
+    stage('build mvebu-cortexa9') {
       steps {
         dir("/temp/${env.BRANCH_NAME}") {
-          sh "make -j1 V=s GLUON_TARGET=sunxi-cortexa7 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
-        }
-      }
-    }
-    stage('build x86-generic') {
-      steps {
-        dir("/temp/${env.BRANCH_NAME}") {
-          sh "make -j1 V=s GLUON_TARGET=x86-generic GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
-        }
-      }
-    }
-    stage('build x86-geode') {
-      steps {
-        dir("/temp/${env.BRANCH_NAME}") {
-          sh "make -j1 V=s GLUON_TARGET=x86-geode GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
-        }
-      }
-    }
-    stage('build x86-64') {
-      steps {
-        dir("/temp/${env.BRANCH_NAME}") {
-          sh "make -j1 V=s GLUON_TARGET=x86-64 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
-        }
-      }
-    }
-    stage('build ipq40xx') {
-      steps {
-        dir("/temp/${env.BRANCH_NAME}") {
-          sh "make -j1 V=s GLUON_TARGET=ipq40xx GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+          sh "make -j1 V=s GLUON_TARGET=mvebu-cortexa9 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
         }
       }
     }
@@ -107,6 +121,13 @@ pipeline {
       steps {
         dir("/temp/${env.BRANCH_NAME}") {
           sh "make -j1 V=s GLUON_TARGET=ramips-mt7620 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+        }
+      }
+    }
+    stage('build ramips-mt7621') {
+      steps {
+        dir("/temp/${env.BRANCH_NAME}") {
+          sh "make -j1 V=s GLUON_TARGET=ramips-mt7621 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
         }
       }
     }
@@ -121,6 +142,34 @@ pipeline {
       steps {
         dir("/temp/${env.BRANCH_NAME}") {
           sh "make -j1 V=s GLUON_TARGET=ramips-rt305x GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+        }
+      }
+    }
+    stage('build sunxi-cortexa7') {
+      steps {
+        dir("/temp/${env.BRANCH_NAME}") {
+          sh "make -j1 V=s GLUON_TARGET=sunxi-cortexa7 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+        }
+      }
+    }
+    stage('build x86-64') {
+      steps {
+        dir("/temp/${env.BRANCH_NAME}") {
+          sh "make -j1 V=s GLUON_TARGET=x86-64 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+        }
+      }
+    }
+    stage('build x86-generic') {
+      steps {
+        dir("/temp/${env.BRANCH_NAME}") {
+          sh "make -j1 V=s GLUON_TARGET=x86-generic GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+        }
+      }
+    }
+    stage('build x86-geode') {
+      steps {
+        dir("/temp/${env.BRANCH_NAME}") {
+          sh "make -j1 V=s GLUON_TARGET=x86-geode GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
         }
       }
     }
