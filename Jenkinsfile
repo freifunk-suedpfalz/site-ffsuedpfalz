@@ -1,4 +1,4 @@
-spipeline {
+pipeline {
   agent {
     node {
       label 'master'
