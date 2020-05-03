@@ -54,13 +54,6 @@ pipeline {
         }
       }
     }
-    stage("build brcm2708-bcm2710") {
-      steps {
-        dir("/temp/${env.BRANCH_NAME}") {
-          sh "make -j11 V=s Broken=1 GLUON_TARGET=brcm2708-bcm2710 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
-        }
-      }
-    }
     stage('build ipq40xx-generic') {
       steps {
         dir("/temp/${env.BRANCH_NAME}") {
