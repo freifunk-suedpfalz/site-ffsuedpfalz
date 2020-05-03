@@ -40,6 +40,13 @@ pipeline {
         }
       }
     }
+    stage('build ath79-generic') {
+      steps {
+        dir("/temp/${env.BRANCH_NAME}") {
+          sh "make -j11 Broken=1 GLUON_TARGET=ath79-generic GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+        }
+      }
+    }
     stage("build brcm2708-bcm2708") {
       steps {
         dir("/temp/${env.BRANCH_NAME}") {
