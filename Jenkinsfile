@@ -26,13 +26,6 @@ pipeline {
         }
       }
     }
-    stage('build ar71xx-mikrotik') {
-      steps {
-        dir("/temp/${env.BRANCH_NAME}") {
-          sh "make -j11 V=s Broken=1 GLUON_TARGET=ar71xx-mikrotik GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
-        }
-      }
-    }
     stage("build ar71xx-nand") {
       steps {
         dir("/temp/${env.BRANCH_NAME}") {
