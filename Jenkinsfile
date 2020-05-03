@@ -106,14 +106,7 @@ pipeline {
     stage('build mpc85xx-p1020') {
       steps {
         dir("/temp/${env.BRANCH_NAME}") {
-          sh "make -j11 V=s  BROKEN=1 GLUON_TARGET=mpc85xx-p1020c GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
-        }
-      }
-    }
-    stage('build mvebu-cortexa9') {
-      steps {
-        dir("/temp/${env.BRANCH_NAME}") {
-          sh "make -j11 V=s  BROKEN=1 GLUON_TARGET=mvebu-cortexa9 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
+          sh "make -j11 V=s  BROKEN=1 GLUON_TARGET=mpc85xx-p1020 GLUON_BRANCH=${params.BUILD_TYPE} GLUON_RELEASE=${VERSION}${BUILD_TYPE}_`date '+%Y%m%d'`"
         }
       }
     }
