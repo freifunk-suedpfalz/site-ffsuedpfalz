@@ -7,7 +7,7 @@ pipeline {
   }
   parameters {
     string(name: 'GLUON_VERSION', defaultValue: 'v2020.1.2', description: 'Gluon version')
-    string(name: 'BUILD_TYPE', defaultValue: 'experimental', description: 'experimental, beta, stable')
+    string(name: 'BUILD_TYPE', defaultValue: 'stable', description: 'experimental, beta, stable')
     string(name: 'VERSION', defaultValue: '1.4.10', description: 'Firmware version')
   }
   stages {
