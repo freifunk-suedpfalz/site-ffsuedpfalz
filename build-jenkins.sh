@@ -22,7 +22,7 @@ export GLUON_URL=https://github.com/freifunk-gluon/gluon.git
 export GLUON_COMMIT=$2
 export BUILD_TYPE=$3
 export VERSION=$4
-export GLUON_RELEASE=$GLUON_COMMIT-`date '+%Y%m%d'`
+export GLUON_RELEASE="${VERSION}${BUILD_TYPE}"
 
 echo "Building gluon $GLUON_COMMIT -> $GLUON_RELEASE"
 
@@ -46,7 +46,7 @@ cp -r ${WORKSPACE}/* "/temp/$1/site/"
 cd "/temp/$1"
 
 # make update
-make update -j 11 "GLUON_RELEASE=${VERSION}~${BUILD_TYPE}_`date '+%Y%m%d'`"
+make update -j 11 "GLUON_RELEASE=${VERSION}${BUILD_TYPE}"
 
 # Manifest für Autoupdater erstellen und mit den Key des Servers unterschreiben
 # Der private Schlüssel des Servers muss in $JENKINS_HOME/secret liegen und das
