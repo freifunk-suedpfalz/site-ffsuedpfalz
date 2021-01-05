@@ -27,23 +27,23 @@ export GLUON_RELEASE="${VERSION}${BUILD_TYPE}"
 echo "Building gluon $GLUON_COMMIT -> $GLUON_RELEASE"
 
 # Verzeichnis für Gluon-Repo erstellen und initialisieren
-echo  "/temp/$1"
+echo  "/tmp/$1"
 
-test -d "/temp/$1" || git clone "$GLUON_URL" "/temp/$1"
-cd "/temp/$1"
+test -d "/tmp/$1" || git clone "$GLUON_URL" "/tmp/$1"
+cd "/tmp/$1"
 git fetch
 git checkout -f $GLUON_COMMIT
 
 # Site config kopieren
-test -d "/temp/$1/site" && rm -r "/temp/$1/site"
-mkdir "/temp/$1/site"
-cp -r ${WORKSPACE}/* "/temp/$1/site/"
-#cp "${WORKSPACE}/modules" "/temp/$1/site/"
-#cp "${WORKSPACE}/site.mk" "/temp/$1/site/"
-#cp "${WORKSPACE}/site.conf" "/temp/$1/site/"
+test -d "/tmp/$1/site" && rm -r "/tmp/$1/site"
+mkdir "/tmp/$1/site"
+cp -r ${WORKSPACE}/* "/tmp/$1/site/"
+#cp "${WORKSPACE}/modules" "/tmp/$1/site/"
+#cp "${WORKSPACE}/site.mk" "/tmp/$1/site/"
+#cp "${WORKSPACE}/site.conf" "/tmp/$1/site/"
 
 # Gluon Pakete aktualisieren und Build ausfuhren
-cd "/temp/$1"
+cd "/tmp/$1"
 
 # make update
 make update -j 11 "GLUON_RELEASE=${VERSION}${BUILD_TYPE}"
