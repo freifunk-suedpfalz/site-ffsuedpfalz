@@ -145,6 +145,13 @@ pipeline {
         }
       }
     }
+    stage('build x86-legacy') {
+      steps {
+        dir("/tmp/${env.BRANCH_NAME}") {
+          sh "make -j7 GLUON_DEPRECATED=full GLUON_TARGET=x86-legacy GLUON_BRANC
+        }
+      }
+    }
     stage('build x86-generic') {
       steps {
         dir("/tmp/${env.BRANCH_NAME}") {
