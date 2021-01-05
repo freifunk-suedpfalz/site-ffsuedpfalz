@@ -46,7 +46,7 @@ cp -r ${WORKSPACE}/* "/tmp/$1/site/"
 cd "/tmp/$1"
 
 # make update
-make update -j 11 "GLUON_RELEASE=${VERSION}${BUILD_TYPE}"
+make update -j 7 "GLUON_RELEASE=${VERSION}${BUILD_TYPE}"
 
 # Manifest für Autoupdater erstellen und mit den Key des Servers unterschreiben
 # Der private Schlüssel des Servers muss in $JENKINS_HOME/secret liegen und das
