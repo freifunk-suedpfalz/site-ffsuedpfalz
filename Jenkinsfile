@@ -9,6 +9,8 @@ pipeline {
     string(name: 'GLUON_VERSION', defaultValue: 'v2021.1.1', description: 'Gluon version')
     string(name: 'BUILD_TYPE', defaultValue: 'beta', description: 'experimental, beta, stable')
     string(name: 'VERSION', defaultValue: '1.4.14', description: 'Firmware version')
+    string(name: 'SITE_URL', defaultValue: 'https://github.com/freifunk-suedpfalz/site-ffsuedpfalz', description: 'FF Site Git Repository')
+    string(name: 'SITE_BRANCH', defaultValue: '1.4.14_b', description: 'FF Site Git Branch')
   }
   stages {
     stage('prepare build') {
@@ -16,7 +18,7 @@ pipeline {
         rocketSend channel: 'firmware_builds', message: 'Build started'
         echo "Running ${env.BUILD_ID} on on ${env.JENKINS_URL}"
         checkout scm
-        sh "sh -x build-jenkins.sh ${env.BRANCH_NAME} ${params.GLUON_VERSION} ${params.BUILD_TYPE} ${params.VERSION}"
+        sh "sh -x build-jenkins.sh ${env.BRANCH_NAME} ${params.GLUON_VERSION} ${params.BUILD_TYPE} ${params.SITE_URL} ${params.VERSION}"
       }
     }
     stage('build ar71xx-generic') {
