@@ -19,7 +19,7 @@ pipeline {
         rocketSend channel: 'firmware_builds', message: 'Build started'
         echo "Running ${env.BUILD_ID} on on ${env.JENKINS_URL}"
         checkout scm
-        sh "sh -x build-jenkins.sh ${env.BRANCH_NAME} ${params.GLUON_VERSION} ${params.BUILD_TYPE}  ${params.VERSION} ${params.SITE_URL} ${params.SITE_BRANCH}"
+        sh "sh -x build-jenkins.sh ${env.BRANCH_NAME} ${params.GLUON_VERSION} ${params.BUILD_TYPE}  ${params.VERSION} ${params.SITE_URL} ${params.SITE_BRANCH} ${params.CORES}"
       }
     }
     stage('build ar71xx-generic') {
