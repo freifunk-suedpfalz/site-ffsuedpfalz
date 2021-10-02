@@ -17,6 +17,22 @@ msgstr ""
 "Freifunk-Knoten. Fülle das folgende Formular deinen Vorstellungen "
 "entsprechend aus und sende es ab."
 
+msgid "gluon-config-mode:domain"
+msgstr "Domäne"
+
+msgid "gluon-config-mode:domain-select"
+msgstr ""
+"Hier hast du die Möglichkeit, die Mesh-Domäne, in der sich dein Knoten "
+"befindet, auszuwählen. Bitte denke daran, dass sich dein Knoten nur mit den "
+"Knoten der ausgewählten Domäne verbinden kann."
+
+msgid "gluon-config-mode:novpn"
+msgstr ""
+"<p>Du hast ausgewählt, <strong>kein Mesh-VPN</strong> "
+"zu nutzen. Dein Knoten kann also nur dann eine Verbindung zum Freifunk-Netz "
+"aufbauen, wenn andere Freifunk-Router in WLAN-Reichweite sind."
+"</p>"
+
 msgid "gluon-config-mode:pubkey"
 msgstr ""
 "Der Knoten ist nun direkt nutzbar. Das ist der Schlüssel deines Freifunkknotens, er wird nicht weiter benötigt und dient nur zu deiner persönlichen Information. "
@@ -28,9 +44,35 @@ msgstr ""
 "verbinden. Weitere Informationen zur "
 "Freifunk-Südpfalz-Community findest du auf "
 "<a href=\"http://suedpfalz.freifunk.net/\">http://suedpfalz.freifunk.net</a>, <a href=\"https://twitter.com/FFSuedpfalz\"> Twitter</a>, oder <a href=\"http://facebook.com/freifunkSuedpfalz\"> Facebook</a>.</p>"
-"Freifunk Südpfalz ist eine Communtiy in der Domäne Queichufer des Freifunk Rheinland e.V.</p>"
+"<p>Freifunk Südpfalz ist eine Communtiy in der Domäne Queichufer des Freifunk Rheinland e.V.</p>"
 
 "<p>Um zu dieser Konfigurationsseite zurückzugelangen, drücke im normalen "
 "Betrieb für etwa acht Sekunden den Reset-Button. Das Gerät wird dann im Konfigurations "
 "Modus neustarten.</p>"
 "<p>Viel Spaß mit deinem Knoten und der Erkundung von Freifunk!</p>"
+
+msgid "gluon-config-mode:altitude-label"
+msgstr "Höhe"
+
+msgid "gluon-config-mode:altitude-help"
+msgstr ""
+"Die Höhenangabe ist optional und sollte nur gesetzt werden, wenn ein "
+"exakter Wert bekannt ist."
+
+# Leave empty to use the default text, which can be found in:
+# package/gluon-config-mode-hostname/i18n/
+msgid "gluon-config-mode:hostname-help"
+msgstr ""
+
+# Leave empty to use the default text, which can be found in:
+# package/gluon-config-mode-geo-location/i18n/
+msgid "gluon-config-mode:geo-location-help"
+msgstr ""
+
+# Leave empty to use the default text, which can be found in:
+# package/gluon-config-mode-contact-info/i18n/
+msgid "gluon-config-mode:contact-help"
+msgstr ""
+
+msgid "gluon-config-mode:contact-note"
+msgstr ""
