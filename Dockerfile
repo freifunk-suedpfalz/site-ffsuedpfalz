@@ -28,5 +28,5 @@ RUN ln -s /usr/local/bin/build-jenkins.sh /
 ENTRYPOINT build-jenkins.sh $BRANCH_NAME $GLUON_VERSION $BUILD_TYPE $VERSION $SITE_URL $SITE_BRANCH $CORES $VERBOSE \
            && cd /tmp/$BRANCH_NAME \
            && for TARGET in $(make list-targets); do \
-               make GLUON_TARGET=$TARGET; \
+               make -j $CORES GLUON_DEPRECATED=full GLUON_TARGET=$TARGET GLUON_AUTOUPDATER_BRANCH=$BUILD_TYPE GLUON_AUTOUPDATER_ENABLED=1 GLUON_RELEASE=$VERSION$BUILD_TYPE; \
            done
