@@ -35,12 +35,13 @@ echo "Building gluon $GLUON_COMMIT -> $GLUON_RELEASE"
 # Verzeichnis für Gluon-Repo erstellen und initialisieren
 echo  "/tmp/$1"
 
-git clone "$GLUON_URL" "/tmp/$1"
+test -d "/tmp/$1" || git clone "$GLUON_URL" "/tmp/$1"
 cd "/tmp/$1"
 git fetch
 git checkout $GLUON_COMMIT
 
 # Site config kopieren
+test -d "/tmp/$1/site" && rm -r "/tmp/$1/site"
 mkdir "/tmp/$1/site"
 git clone $SITE_URL "/tmp/$1/site"
 cd "/tmp/$1/site/"
