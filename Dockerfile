@@ -1,7 +1,7 @@
 FROM debian:stable-slim
-ENV GLUON_VERSION=v2021.1.1
-ENV BUILD_TYPE=beta
-ENV BRANCH_NAME=1.4.14_b
+ENV GLUON_VERSION=v2021.1.2
+ENV BUILD_TYPE=stable
+ENV BRANCH_NAME=1.4.14
 ENV VERSION=1.4.14
 ENV GLUON_URL=https://github.com/freifunk-gluon/gluon.git
 
