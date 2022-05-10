@@ -13,7 +13,6 @@ ENV CORES=7
 ENV VERBOSE=w
 
 ENV GLUON_IMAGEDIR=/output
-VOLUME /output
 
 RUN apt-get update \
     && apt-get install -y cmake help2man wget curl python2.7 build-essential gnupg gawk unzip ncurses-dev git \
