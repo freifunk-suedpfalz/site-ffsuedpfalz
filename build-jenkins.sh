@@ -19,37 +19,37 @@ set -e
 
 # Globale Einstellungen
 export GLUON_URL=https://github.com/freifunk-gluon/gluon.git
-export GLUON_COMMIT=$2
-export BUILD_TYPE=$3
-export VERSION=$4
+export GLUON_COMMIT=$1
+export BUILD_TYPE=$2
+export VERSION=$3
 export GLUON_RELEASE="${VERSION}${BUILD_TYPE}"
 
-export SITE_URL=$5
-export SITE_BRANCH=$6
+export SITE_URL=$4
+export SITE_BRANCH=$5
 
-export CORES=$7
-export VERBOSE=$8
+export CORES=$6
+export VERBOSE=$7
 
 echo "Building gluon $GLUON_COMMIT -> $GLUON_RELEASE"
 
 # Verzeichnis für Gluon-Repo erstellen und initialisieren
-echo  "/tmp/$1"
+echo  "/tmp/$5"
 
-test -d "/tmp/$1" || git clone "$GLUON_URL" "/tmp/$1"
-cd "/tmp/$1"
+test -d "/tmp/$5" || git clone "$GLUON_URL" "/tmp/$5"
+cd "/tmp/$5"
 git fetch
 git checkout $GLUON_COMMIT
 
 # Site config kopieren
-test -d "/tmp/$1/site" && rm -r "/tmp/$1/site"
-mkdir "/tmp/$1/site"
-git clone $SITE_URL "/tmp/$1/site"
-cd "/tmp/$1/site/"
+test -d "/tmp/$5/site" && rm -r "/tmp/$5/site"
+mkdir "/tmp/$5/site"
+git clone $SITE_URL "/tmp/$5/site"
+cd "/tmp/$5/site/"
 git fetch
 git checkout $SITE_BRANCH
 
 # Gluon Pakete aktualisieren und Build ausfuhren
-cd "/tmp/$1"
+cd "/tmp/$5"
 
 # make update
 echo make update -j $CORES "GLUON_RELEASE=$GLUON_RELEASE"
