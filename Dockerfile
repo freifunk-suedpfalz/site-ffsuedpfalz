@@ -1,10 +1,15 @@
+# mindestens die kommentierten Zeilen sind anzupassen
 FROM debian:stable-slim
+# Gluon Version anpassen
 ENV GLUON_VERSION=v2021.1.2
+# stable, beta oder experimental anpassen
 ENV BUILD_TYPE=experimental
+# Version für firmware anpassen
 ENV VERSION=1.4.14
 ENV GLUON_URL=https://github.com/freifunk-gluon/gluon.git
 
 ENV SITE_URL=https://github.com/freifunk-suedpfalz/site-ffsuedpfalz
+## Git Branch der für den Build benutzt wird anpassen
 ENV SITE_BRANCH=1.4.14_e
 
 ENV FORCE_UNSAFE_CONFIGURE=1
