@@ -1,0 +1,12 @@
+volumes:
+  output:
+
+services:
+  site-ffsuedpfalz:
+    image: site-ffsuedpfalz
+    build: .
+    hostname: site-ffsuedpfalz
+    init: true
+    volumes:
+      - output:/output
+    env_file: docker-compose.env
