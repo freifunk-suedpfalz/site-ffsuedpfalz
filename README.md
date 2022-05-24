@@ -2,7 +2,7 @@ Gluon site config für Freifunk Südpfalz in der Queichufer Domain des Freifunk 
 
 Builds can be done via jenkins or docker.
 
-##Docker
+## Docker
 Clone Repository and create the image.
 
 ```
