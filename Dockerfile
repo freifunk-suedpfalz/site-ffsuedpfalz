@@ -10,7 +10,7 @@ ENV GLUON_URL=https://github.com/freifunk-gluon/gluon.git
 
 ENV SITE_URL=https://github.com/freifunk-suedpfalz/site-ffsuedpfalz
 ## Git Branch der für den Build benutzt wird anpassen
-ENV SITE_BRANCH=1.4.15_e
+ENV SITE_BRANCH=1.4.15_b
 
 ENV FORCE_UNSAFE_CONFIGURE=1
 ENV CORES=16
@@ -20,7 +20,7 @@ ENV VERBOSE=w
 ENV GLUON_IMAGEDIR=/output
 
 RUN apt-get update \
-    && apt-get install -y cmake help2man wget curl python2.7 build-essential gnupg gawk unzip ncurses-dev git \
+    && apt-get install -y cmake help2man wget curl python2.7 python3 rsync build-essential gnupg gawk unzip ncurses-dev git \
     && apt-get update \
     && curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py && python2.7 get-pip.py
 
