@@ -19,6 +19,8 @@ ENV VERBOSE=w
 
 ENV GLUON_IMAGEDIR=/output
 
+ENV FORCE_UNSAFE_CONFIGURE=1
+
 RUN apt-get update \
     && apt-get install -y cmake help2man wget curl python2.7 python3 rsync build-essential gnupg gawk unzip ncurses-dev git \
     && apt-get update \
