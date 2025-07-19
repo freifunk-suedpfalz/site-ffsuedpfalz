@@ -1,16 +1,16 @@
 # mindestens die kommentierten Zeilen sind anzupassen
 FROM debian:stable-slim
 # Gluon Version anpassen
-ENV GLUON_VERSION=v2023.2.3
+ENV GLUON_VERSION=v2023.2.5
 # stable, beta oder experimental anpassen
-ENV BUILD_TYPE=stable
+ENV BUILD_TYPE=experimental
 # Version für firmware anpassen
-ENV VERSION=1.4.15
+ENV VERSION=1.4.16
 ENV GLUON_URL=https://github.com/freifunk-gluon/gluon.git
 
 ENV SITE_URL=https://github.com/freifunk-suedpfalz/site-ffsuedpfalz
 ## Git Branch der für den Build benutzt wird anpassen
-ENV SITE_BRANCH=1.4.15
+ENV SITE_BRANCH=1.4.16_e
 
 ENV FORCE_UNSAFE_CONFIGURE=1
 ENV CORES=11
@@ -33,6 +33,6 @@ RUN ln -s /usr/local/bin/build-jenkins.sh /
 ENTRYPOINT build-jenkins.sh $GLUON_VERSION $BUILD_TYPE $VERSION $SITE_URL $SITE_BRANCH $CORES $VERBOSE \
            && cd /tmp/$SITE_BRANCH \
            && for TARGET in $(make list-targets); do \
-               make -j $CORES V=$VERBOSE GLUON_OUTPUTDIR=$GLUON_IMAGEDIR GLUON_DEPRECATED=full GLUON_TARGET=$TARGET GLUON_AUTOUPDATER_BRANCH=$BUILD_TYPE GLUON_AUTOUPDATER_ENABLED=1 GLUON_RELEASE=$VERSION$BUILD_TYPE; \
+               make -j $CORES V=$VERBOSE GLUON_OUTPUTDIR=$GLUON_IMAGEDIR GLUON_DEPRECATED=full GLUON_TARGET=$TARGET GLUON_AUTOUPDATER_BRANCH=$BUILD_TYPE GLUON_AUTOUPDATER_ENABLED=1 GLUON_RELEASE=$VERSION$BUILD_TYPE > $GLUON_IMAGEDIR/$TARGET.log 2>&1; \
            done \
            && make manifest GLUON_AUTOUPDATER_BRANCH=$BUILD_TYPE GLUON_RELEASE=$VERSION$BUILD_TYPE
