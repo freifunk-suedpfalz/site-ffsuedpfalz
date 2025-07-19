@@ -3,7 +3,7 @@ FROM debian:stable-slim
 # Gluon Version anpassen
 ENV GLUON_VERSION=v2023.2.3
 # stable, beta oder experimental anpassen
-ENV BUILD_TYPE=beta
+ENV BUILD_TYPE=stable
 # Version für firmware anpassen
 ENV VERSION=1.4.15
 ENV GLUON_URL=https://github.com/freifunk-gluon/gluon.git
