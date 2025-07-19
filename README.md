@@ -7,7 +7,7 @@ Clone Repository and create the image.
 
 ```
 git clone https://github.com/freifunk-suedpfalz/site-ffsuedpfalz
-cd site-suedpfalz
+cd site-ffsuedpfalz
 git checkout 1.4.15_b
 docker build -t fw .
 docker run --env CORES=9 --env VERBOSE=w -v $PWD/output:/output fw

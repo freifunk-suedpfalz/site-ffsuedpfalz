@@ -10,10 +10,10 @@ ENV GLUON_URL=https://github.com/freifunk-gluon/gluon.git
 
 ENV SITE_URL=https://github.com/freifunk-suedpfalz/site-ffsuedpfalz
 ## Git Branch der für den Build benutzt wird anpassen
-ENV SITE_BRANCH=1.4.15_b
+ENV SITE_BRANCH=1.4.15
 
 ENV FORCE_UNSAFE_CONFIGURE=1
-ENV CORES=16
+ENV CORES=11
 
 ENV VERBOSE=w
 
