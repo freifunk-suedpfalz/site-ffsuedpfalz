@@ -24,7 +24,6 @@ end
 
 packages({
     'gluon-autorestart',
-    'gluon-ffddorf-watchdog',
     'iwinfo',
 })
 
