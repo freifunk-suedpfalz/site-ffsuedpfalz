@@ -19,7 +19,6 @@ features({
 })
 
 packages({
-    'gluon-autorestart',
     'iwinfo',
 })
 
